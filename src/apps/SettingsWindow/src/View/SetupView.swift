@@ -10,15 +10,15 @@ enum SetupItem: String, CaseIterable, Identifiable, Hashable {
 
   var title: String {
     switch self {
-    case .services: return "Background Services"
-    case .accessibility: return "Accessibility"
+    case .services: return String(localized: "Background Services")
+    case .accessibility: return String(localized: "Accessibility")
     // Depending on the macOS version, granting Accessibility permission may also allow Input Monitoring.
     // In that case, both requirements are considered completed once Accessibility is granted, so if we call it
     // "Input Monitoring", users may wonder why it is marked as completed even though they did not explicitly
     // allow Input Monitoring.
     // To avoid that confusion, the displayed label is changed to "Capture Input Events".
-    case .inputMonitoring: return "Capture Input Events"
-    case .driverExtension: return "Driver Extension"
+    case .inputMonitoring: return String(localized: "Capture Input Events")
+    case .driverExtension: return String(localized: "Driver Extension")
     }
   }
 
@@ -143,16 +143,18 @@ struct SetupView: View {
   private func setupCompletedTitle(_ item: SetupItem) -> String {
     switch item {
     case .services:
-      return "Background services are enabled."
+      return String(localized: "Background services are enabled.")
     case .accessibility:
-      return "Accessibility access is allowed."
+      return String(localized: "Accessibility access is allowed.")
     case .inputMonitoring:
-      return """
-        Input event capture is allowed.
-        (It may be granted via Accessibility permission.)
-        """
+      return String(
+        localized: "setup.input_event_capture_allowed",
+        defaultValue: """
+          Input event capture is allowed.
+          (It may be granted via Accessibility permission.)
+          """)
     case .driverExtension:
-      return "Driver Extension is allowed."
+      return String(localized: "Driver Extension is allowed.")
     }
   }
 

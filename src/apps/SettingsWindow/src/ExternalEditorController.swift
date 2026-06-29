@@ -26,7 +26,7 @@ final class ExternalEditorController: ObservableObject {
       panel.canChooseDirectories = false
       panel.canChooseFiles = true
       panel.allowedContentTypes = [UTType.application]
-      panel.prompt = "Choose"
+      panel.prompt = String(localized: "Choose")
       panel.begin { response in
         guard response == .OK, let url = panel.url else {
           continuation.resume(returning: nil)
@@ -56,9 +56,9 @@ final class ExternalEditorController: ObservableObject {
   func openTitle() -> String {
     if let url = externalEditorURL() {
       let name = FileManager.default.displayName(atPath: url.path)
-      return "Open in \(name)"
+      return String(format: String(localized: "Open in %@"), name)
     }
-    return "Open in external editor"
+    return String(localized: "Open in external editor")
   }
 
   func openEditor(
@@ -178,7 +178,7 @@ final class ExternalEditorController: ObservableObject {
     libkrbn_get_user_tmp_directory(&buffer, buffer.count)
     let path = String(utf8String: buffer) ?? ""
     guard !path.isEmpty else {
-      onError("Failed to get user tmp directory.")
+      onError(String(localized: "Failed to get user tmp directory."))
       return nil
     }
     return URL(fileURLWithPath: path, isDirectory: true)

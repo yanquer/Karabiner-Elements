@@ -22,22 +22,22 @@ enum SidebarItem: String, CaseIterable, Identifiable, Hashable {
 
   var title: String {
     switch self {
-    case .simpleModifications: return "Simple Modifications"
-    case .functionKeys: return "Function Keys"
-    case .complexModifications: return "Complex Modifications"
-    case .complexModificationsAdvanced: return "Parameters"
-    case .devices: return "Devices"
-    case .virtualKeyboard: return "Virtual Keyboard"
-    case .profiles: return "Profiles"
-    case .ui: return "UI"
-    case .update: return "Update"
-    case .misc: return "Misc"
-    case .uninstall: return "Uninstall"
-    case .expert: return "Expert"
-    case .action: return "Quit, Restart"
-    case .log: return "Log"
-    case .systemExtensions: return "System Extensions"
-    case .setup: return "Setup"
+    case .simpleModifications: return String(localized: "Simple Modifications")
+    case .functionKeys: return String(localized: "Function Keys")
+    case .complexModifications: return String(localized: "Complex Modifications")
+    case .complexModificationsAdvanced: return String(localized: "Parameters")
+    case .devices: return String(localized: "Devices")
+    case .virtualKeyboard: return String(localized: "Virtual Keyboard")
+    case .profiles: return String(localized: "Profiles")
+    case .ui: return String(localized: "UI")
+    case .update: return String(localized: "Update")
+    case .misc: return String(localized: "Misc")
+    case .uninstall: return String(localized: "Uninstall")
+    case .expert: return String(localized: "Expert")
+    case .action: return String(localized: "Quit, Restart")
+    case .log: return String(localized: "Log")
+    case .systemExtensions: return String(localized: "System Extensions")
+    case .setup: return String(localized: "Setup")
     }
   }
 
@@ -78,7 +78,7 @@ struct ContentMainView: View {
 
   let sections: [SidebarSection] = [
     SidebarSection(
-      title: "Modifications",
+      title: String(localized: "Modifications"),
       items: [
         .simpleModifications,
         .functionKeys,
@@ -87,7 +87,7 @@ struct ContentMainView: View {
       ]
     ),
     SidebarSection(
-      title: "Configurations",
+      title: String(localized: "Configurations"),
       items: [
         .devices,
         .virtualKeyboard,
@@ -96,7 +96,7 @@ struct ContentMainView: View {
       ]
     ),
     SidebarSection(
-      title: "Maintenance",
+      title: String(localized: "Maintenance"),
       items: [
         .update,
         .misc,
@@ -106,7 +106,7 @@ struct ContentMainView: View {
       ]
     ),
     SidebarSection(
-      title: "Diagnostic",
+      title: String(localized: "Diagnostic"),
       items: [
         .log,
         .systemExtensions,

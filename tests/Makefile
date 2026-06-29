@@ -1,5 +1,6 @@
 all:
 	bash scripts/check-cmakelists.sh
+	bash scripts/check-zh-hans-localizations.sh
 	@for d in `find src -type d | sort`; do \
 		if [ -f "$$d/Makefile" ]; then \
 			echo "[Test] $$d"; \

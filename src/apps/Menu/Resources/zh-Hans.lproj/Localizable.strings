@@ -1,0 +1,14 @@
+/* 本文件提供菜单栏应用固定界面文案的简体中文翻译。配置文件名称等用户内容不在本文件翻译范围内。 */
+
+"Are you sure you want to quit Karabiner-Elements?" = "确定要退出 Karabiner-Elements 吗？";
+"Cancel" = "取消";
+"Check for beta updates..." = "检查测试版更新...";
+"Check for updates..." = "检查更新...";
+"Karabiner-Elements %@" = "Karabiner-Elements %@";
+"Launch EventViewer..." = "启动 EventViewer...";
+"Profiles" = "配置文件";
+"Quit" = "退出";
+"Quit Karabiner-Elements" = "退出 Karabiner-Elements";
+"Restart Karabiner-Elements" = "重启 Karabiner-Elements";
+"Settings..." = "设置...";
+"The changed key will be restored after Karabiner-Elements is quit." = "退出 Karabiner-Elements 后，更改过的按键会恢复。";

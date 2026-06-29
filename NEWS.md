@@ -4,6 +4,7 @@
 
 - ✨ New Features
     - Added filtering functionality to the log viewer.
+    - Added Simplified Chinese localization for the main app interfaces.
 - 🐛 Bug Fixes
     - Fixed the ac_zoom_in and ac_zoom_out key codes being swapped.
     - Fixed an issue where the settings window could open at login when the system default configuration used an old format.

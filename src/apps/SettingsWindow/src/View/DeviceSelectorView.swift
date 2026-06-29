@@ -60,7 +60,7 @@ struct DeviceSelectorView: View {
 
   private func deviceLabelTitle(_ device: LibKrbn.ConnectedDevice) -> String {
     if device.index < 0 {
-      return "For all devices"
+      return String(localized: "For all devices")
     } else {
       var title = "\(device.productName) (\(device.manufacturerName))"
 

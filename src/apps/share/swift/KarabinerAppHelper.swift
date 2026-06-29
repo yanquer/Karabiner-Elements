@@ -29,11 +29,12 @@ final class KarabinerAppHelper {
   func quitKarabiner(askForConfirmation: Bool, quitFrom: QuitFrom) {
     if askForConfirmation {
       let alert = NSAlert()
-      alert.messageText = "Are you sure you want to quit Karabiner-Elements?"
-      alert.informativeText = "The changed key will be restored after Karabiner-Elements is quit."
-      alert.addButton(withTitle: "Quit")
+      alert.messageText = String(localized: "Are you sure you want to quit Karabiner-Elements?")
+      alert.informativeText = String(
+        localized: "The changed key will be restored after Karabiner-Elements is quit.")
+      alert.addButton(withTitle: String(localized: "Quit"))
       alert.buttons[0].tag = NSApplication.ModalResponse.OK.rawValue
-      alert.addButton(withTitle: "Cancel")
+      alert.addButton(withTitle: String(localized: "Cancel"))
       alert.buttons[1].tag = NSApplication.ModalResponse.cancel.rawValue
 
       let result = alert.runModal()

@@ -12,12 +12,12 @@ enum SidebarItem: String, CaseIterable, Identifiable, Hashable {
 
   var title: String {
     switch self {
-    case .main: return "Main"
-    case .frontmostApplication: return "Frontmost Application"
-    case .variables: return "Variables"
-    case .devices: return "Devices"
-    case .unknownEvents: return "Unknown Events"
-    case .settings: return "Settings"
+    case .main: return String(localized: "Main")
+    case .frontmostApplication: return String(localized: "Frontmost Application")
+    case .variables: return String(localized: "Variables")
+    case .devices: return String(localized: "Devices")
+    case .unknownEvents: return String(localized: "Unknown Events")
+    case .settings: return String(localized: "Settings")
     }
   }
 

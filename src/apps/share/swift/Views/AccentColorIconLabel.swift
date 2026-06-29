@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AccentColorIconLabel: View {
-  private(set) var title: String
+  private(set) var title: LocalizedStringKey
   private(set) var systemImage: String
 
   var body: some View {

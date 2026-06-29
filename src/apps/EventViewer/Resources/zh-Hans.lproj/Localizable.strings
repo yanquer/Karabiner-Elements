@@ -1,0 +1,33 @@
+/* 本文件提供 Karabiner-EventViewer 固定界面文案的简体中文翻译。事件数据、设备名称和实时 JSON 输出不在本文件翻译范围内。 */
+
+"Bundle Identifier: " = "Bundle Identifier：";
+"Capture Input Events" = "捕获输入事件";
+"Clear" = "清除";
+"Clear user variables" = "清除用户变量";
+"Copy to pasteboard" = "复制到剪贴板";
+"Detection Source: " = "检测来源：";
+"Devices" = "设备";
+"Enable Command+Q and Command+W shortcut (Default: off)" = "启用 Command+Q 和 Command+W 快捷键（默认：关）";
+"File Path: " = "文件路径：";
+"Force EventViewer to stay on top of other windows (Default: off)" = "让 EventViewer 保持在其他窗口之上（默认：关）";
+"Frontmost Application" = "前台应用";
+"Karabiner-EventViewer requires Input Monitoring permission to show input events." = "Karabiner-EventViewer 需要输入监控权限才能显示输入事件。";
+"Main" = "主要";
+"Monitoring events" = "监控事件";
+"Please allow Karabiner-EventViewer to monitor input events" = "请允许 Karabiner-EventViewer 监控输入事件";
+"Please allow on Privacy & Security System Settings." = "请在“隐私与安全性”系统设置中允许。";
+"Please enter keyboard input. Using the text area above makes it easier to verify." = "请输入键盘输入。使用上方文本区域会更容易验证。";
+"Please enter text in the field below." = "请在下方字段中输入文本。";
+"Settings" = "设置";
+"Show EventViewer in all spaces (Default: off)" = "在所有空间显示 EventViewer（默认：关）";
+"Showing events that are not supported by Karabiner-Elements" = "正在显示 Karabiner-Elements 不支持的事件";
+"Temporarily turns off all Karabiner-Elements modifications" = "临时关闭所有 Karabiner-Elements 修改";
+"This text input field is used to inspect key events." = "此文本输入字段用于检查按键事件。";
+"Unknown Events" = "未知事件";
+"Unknown events are not being sent." = "未发送未知事件。";
+"Variables" = "变量";
+"Window behavior" = "窗口行为";
+"from %@" = "来自 %@";
+"integer value: " = "整数值：";
+"usage page: " = "usage page：";
+"usage: " = "usage：";
