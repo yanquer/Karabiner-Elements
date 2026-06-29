@@ -18,10 +18,6 @@ final class Updater: ObservableObject {
     updaterController.updater.clearFeedURLFromUserDefaults()
   }
 
-  isolated deinit {
-    delegate.cancelUserAttentionRequest()
-  }
-
   func checkForUpdatesInBackground() {
     delegate.includingBetaVersions = false
     updaterController.updater.checkForUpdatesInBackground()

@@ -8,6 +8,7 @@
 - 🐛 Bug Fixes
     - Fixed the ac_zoom_in and ac_zoom_out key codes being swapped.
     - Fixed an issue where the settings window could open at login when the system default configuration used an old format.
+    - Fixed Xcode 16.4 Swift 6 build issues in MultitouchExtension and Updater.
 - ⚡️ Improvements
     - Improved internal communication between Karabiner-Elements processes by replacing the IPC backend with `pqrs::unix_domain_stream`.
     - Changed update checks to run periodically, not only at startup.

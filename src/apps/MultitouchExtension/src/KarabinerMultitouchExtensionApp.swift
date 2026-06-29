@@ -45,10 +45,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     category: String(describing: AppDelegate.self))
 
   private var activity: NSObjectProtocol?
-  private var sleepTask: Task<Void, Never>?
-  private var wakeTask: Task<Void, Never>?
-  private var displaySleepTask: Task<Void, Never>?
-  private var displayWakeTask: Task<Void, Never>?
+  private var sleepCancellable: AnyCancellable?
+  private var wakeCancellable: AnyCancellable?
+  private var displaySleepCancellable: AnyCancellable?
+  private var displayWakeCancellable: AnyCancellable?
   private var userSettingsCancellable: AnyCancellable?
   private var isDisplaySleeping = false
 
@@ -125,26 +125,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   private func observeSystemSleep() {
-    sleepTask = Task { @MainActor in
-      let notifications = NSWorkspace.shared.notificationCenter.notifications(
-        named: NSWorkspace.willSleepNotification,
-        object: nil
-      )
+    sleepCancellable = NSWorkspace.shared.notificationCenter.publisher(
+      for: NSWorkspace.willSleepNotification,
+      object: nil
+    )
+    .sink { [weak self] _ in
+      guard let self else { return }
 
-      for await _ in notifications {
+      Task { @MainActor in
         logger.info("NSWorkspace.willSleepNotification")
 
         self.stopActivity()
       }
     }
 
-    wakeTask = Task { @MainActor in
-      let notifications = NSWorkspace.shared.notificationCenter.notifications(
-        named: NSWorkspace.didWakeNotification,
-        object: nil
-      )
+    wakeCancellable = NSWorkspace.shared.notificationCenter.publisher(
+      for: NSWorkspace.didWakeNotification,
+      object: nil
+    )
+    .sink { [weak self] _ in
+      guard let self else { return }
 
-      for await _ in notifications {
+      Task { @MainActor in
         logger.info("NSWorkspace.didWakeNotification")
 
         self.startActivity()
@@ -153,13 +155,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   private func observeDisplaySleep() {
-    displaySleepTask = Task { @MainActor in
-      let notifications = NSWorkspace.shared.notificationCenter.notifications(
-        named: NSWorkspace.screensDidSleepNotification,
-        object: nil
-      )
+    displaySleepCancellable = NSWorkspace.shared.notificationCenter.publisher(
+      for: NSWorkspace.screensDidSleepNotification,
+      object: nil
+    )
+    .sink { [weak self] _ in
+      guard let self else { return }
 
-      for await _ in notifications {
+      Task { @MainActor in
         logger.info("NSWorkspace.screensDidSleepNotification")
 
         isDisplaySleeping = true
@@ -168,13 +171,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       }
     }
 
-    displayWakeTask = Task { @MainActor in
-      let notifications = NSWorkspace.shared.notificationCenter.notifications(
-        named: NSWorkspace.screensDidWakeNotification,
-        object: nil
-      )
+    displayWakeCancellable = NSWorkspace.shared.notificationCenter.publisher(
+      for: NSWorkspace.screensDidWakeNotification,
+      object: nil
+    )
+    .sink { [weak self] _ in
+      guard let self else { return }
 
-      for await _ in notifications {
+      Task { @MainActor in
         logger.info("NSWorkspace.screensDidWakeNotification")
 
         isDisplaySleeping = false
@@ -185,18 +189,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   private func cancelSystemSleepObservers() {
-    sleepTask?.cancel()
-    sleepTask = nil
+    sleepCancellable = nil
 
-    wakeTask?.cancel()
-    wakeTask = nil
+    wakeCancellable = nil
   }
 
   private func cancelDisplaySleepObservers() {
-    displaySleepTask?.cancel()
-    displaySleepTask = nil
+    displaySleepCancellable = nil
 
-    displayWakeTask?.cancel()
-    displayWakeTask = nil
+    displayWakeCancellable = nil
   }
 }
